@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/model-triangulated.obj-13901a3d4400c744144b9a469056d339.mesh"
+
+[deps]
+
+files=[ "res://.import/model-triangulated.obj-13901a3d4400c744144b9a469056d339.mesh" ]
+
+source_file="res://Models/model-triangulated.obj"
+dest_files=[ "res://.import/model-triangulated.obj-13901a3d4400c744144b9a469056d339.mesh", "res://.import/model-triangulated.obj-13901a3d4400c744144b9a469056d339.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
