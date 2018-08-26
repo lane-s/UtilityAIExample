@@ -1,15 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Materials/main_world_environment.tres" type="Environment" id=1]
-[ext_resource path="res://Core/World/WorldPlane.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Core/Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Core/World/Tree.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Core/World.gd" type="Script" id=2]
+[ext_resource path="res://Core/World/WorldPlane.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Core/Player/Camera.gd" type="Script" id=4]
+[ext_resource path="res://Core/Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Core/World/Tree.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Core/World/Fruit.tscn" type="PackedScene" id=7]
 
 [node name="MainWorld" type="WorldEnvironment" index="0"]
 
 environment = ExtResource( 1 )
+script = ExtResource( 2 )
 
-[node name="Camera" type="Camera" parent="." index="0"]
+[node name="WorldPlane" parent="." index="0" instance=ExtResource( 3 )]
+
+transform = Transform( 3000, 0, 0, 0, 1, 0, 0, 0, 3000, 0, -0.987303, 0 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="Camera" type="Camera" parent="." index="1"]
 
 transform = Transform( -0.642788, 0.41637, -0.643008, 0, 0.839388, 0.543532, 0.766044, 0.349376, -0.539548, -6.92334, 13.7854, -5.27339 )
 keep_aspect = 1
@@ -24,26 +33,13 @@ fov = 70.0
 size = 1.0
 near = 0.05
 far = 150.0
+script = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="Navigation" type="Navigation" parent="." index="1"]
-
-editor/display_folded = true
-up_vector = Vector3( 0, 1, 0 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="WorldPlane" parent="Navigation" index="0" instance=ExtResource( 2 )]
-
-transform = Transform( 3000, 0, 0, 0, 1, 0, 0, 0, 3000, 0, -0.987303, 0 )
-_sections_unfolded = [ "Collision", "Transform" ]
-
-[node name="MeshInstance" parent="Navigation/WorldPlane" index="0"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00120963, -3.05148, 0.00129608 )
-
-[node name="CollisionShape" parent="Navigation/WorldPlane" index="1"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.192331, 0 )
+snap_speed = 4.3
+cam_offset = Vector3( -10, 20, -10 )
+deadzone_horizontal = 300
+deadzone_top = 400
+deadzone_bottom = 200
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="2"]
 
@@ -73,12 +69,14 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Shadow" ]
 
-[node name="Player" parent="." index="3" instance=ExtResource( 3 )]
+[node name="Player" parent="." index="3" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02228, -0.723619, -1.2472 )
-script = null
 _sections_unfolded = [ "Axis Lock", "Collision", "Linear", "Transform" ]
+min_speed = 1.0
+max_speed = 8.0
+look_speed = 5.0
 
 [node name="Panel" type="Panel" parent="Player" index="2"]
 
@@ -127,43 +125,52 @@ _sections_unfolded = [ "Rect" ]
 editor/display_folded = true
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.929119, 0 )
 
-[node name="Tree" parent="Trees" index="0" instance=ExtResource( 4 )]
+[node name="Tree" parent="Trees" index="0" instance=ExtResource( 6 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
-[node name="Tree2" parent="Trees" index="1" instance=ExtResource( 4 )]
+[node name="Tree2" parent="Trees" index="1" instance=ExtResource( 6 )]
 
 transform = Transform( 0.784448, 0, 0.620196, 0, 1, 0, -0.620196, 0, 0.784448, -20.6126, 0, 28.031 )
 
-[node name="Tree3" parent="Trees" index="2" instance=ExtResource( 4 )]
+[node name="Tree3" parent="Trees" index="2" instance=ExtResource( 6 )]
 
 transform = Transform( 0.165478, 0, 0.986214, 0, 1, 0, -0.986214, 0, 0.165478, -37.6918, 0, -5.85338 )
 
-[node name="Tree4" parent="Trees" index="3" instance=ExtResource( 4 )]
+[node name="Tree4" parent="Trees" index="3" instance=ExtResource( 6 )]
 
 transform = Transform( -0.543572, 0, 0.839362, 0, 1, 0, -0.839362, 0, -0.543572, -19.591, 0, -51.3608 )
 
-[node name="Tree5" parent="Trees" index="4" instance=ExtResource( 4 )]
+[node name="Tree5" parent="Trees" index="4" instance=ExtResource( 6 )]
 
 transform = Transform( -0.91228, 0, 0.40957, 0, 1, 0, -0.40957, 0, -0.91228, 24.4238, 0, -44.3802 )
 
-[node name="Tree6" parent="Trees" index="5" instance=ExtResource( 4 )]
+[node name="Tree6" parent="Trees" index="5" instance=ExtResource( 6 )]
 
 transform = Transform( -0.562698, 0, 0.826662, 0, 1, 0, -0.826662, 0, -0.562698, 24.4238, 0, 36.5844 )
 
-[node name="Tree7" parent="Trees" index="6" instance=ExtResource( 4 )]
+[node name="Tree7" parent="Trees" index="6" instance=ExtResource( 6 )]
 
 transform = Transform( -0.562698, 0, 0.826662, 0, 1, 0, -0.826662, 0, -0.562698, 24.4238, 0, 36.5844 )
 
-[node name="Tree8" parent="Trees" index="7" instance=ExtResource( 4 )]
+[node name="Tree8" parent="Trees" index="7" instance=ExtResource( 6 )]
 
 transform = Transform( -0.768468, 0, 0.639888, 0, 1, 0, -0.639888, 0, -0.768468, 75.8594, 0, -12.6142 )
 
-[node name="Tree9" parent="Trees" index="8" instance=ExtResource( 4 )]
+[node name="Tree9" parent="Trees" index="8" instance=ExtResource( 6 )]
 
 transform = Transform( -0.377632, 0, 0.925956, 0, 1, 0, -0.925956, 0, -0.377632, 41.5758, 0, 7.8076 )
 
-[connection signal="input_event" from="Navigation/WorldPlane" to="." method="_on_WorldPlane_input_event"]
+[node name="Fruit" parent="." index="5" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35565, 12.2473, -16.4217 )
+mass = 0.05
+linear_damp = 0.0
+angular_damp = 0.0
+_sections_unfolded = [ "Angular", "Collision", "Linear", "Transform", "Visibility" ]
+max_growth_time = 2.0
+min_growth_time = 1.0
+
+[connection signal="input_event" from="WorldPlane" to="." method="_on_WorldPlane_input_event"]
 
 
-[editable path="Navigation/WorldPlane"]

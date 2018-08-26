@@ -21,9 +21,8 @@ settings/stdout/print_fps=true
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
-window/size/fullscreen=true
+window/size/width=1280
+window/size/height=720
 window/dpi/allow_hidpi=true
 
 [input]
@@ -33,19 +32,18 @@ ui_left_button=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"r
 
 [physics]
 
-common/physics_fps=70
+common/physics_fps=90
 3d/physics_engine="Bullet"
-3d/default_gravity=300.0
+3d/default_gravity=1800.0
 
 [rendering]
 
 threads/thread_model=2
-quality/filters/anisotropic_filter_level=2
 quality/directional_shadow/size=2048
 quality/shadow_atlas/size=2048
+quality/shadows/filter_mode=2
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
 quality/subsurface_scattering/quality=0
 quality/voxel_cone_tracing/high_quality=false
-quality/filters/msaa=2
 environment/default_environment="res://Materials/main_world_environment.tres"

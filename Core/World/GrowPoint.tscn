@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Core/World/GrowPoint.gd" type="Script" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -62,7 +64,11 @@ radial_segments = 64
 rings = 32
 is_hemisphere = false
 
-[node name="GrowPoint" type="Spatial" index="0"]
+[node name="GrowPoint" type="Spatial"]
+
+script = ExtResource( 1 )
+max_no_growth_time = 30
+min_no_growth_time = 1
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 

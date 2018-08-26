@@ -8,10 +8,7 @@ path.etc2="res://.import/BubingaTree_BaseColor.png-af357dc4f7f2be61e7c1ceb3621cc
 [deps]
 
 source_file="res://Models/Tree/BubingaTree_BaseColor.png"
-source_md5="37ee66844b5df288fb8651802a5cb328"
-
 dest_files=[ "res://.import/BubingaTree_BaseColor.png-af357dc4f7f2be61e7c1ceb3621ccaa2.s3tc.stex", "res://.import/BubingaTree_BaseColor.png-af357dc4f7f2be61e7c1ceb3621ccaa2.etc2.stex" ]
-dest_md5="686426a0ee257cb2125d4028e6d39bb2"
 
 [params]
 
